@@ -3,7 +3,7 @@
 entrada = input('Voce quer "entrar" ou "sair"? ')
 
 if entrada == 'entrar':
-  print('Voce entrou no sistema')
+    print('Voce entrou no sistema')
   
   print(12341234)
   
