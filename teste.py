@@ -1,51 +1,94 @@
 import tkinter as tk
-import sqlite3
 
 
-class Login:
+class TelaControleGastos:
     def __init__(self, master):
         self.master = master
-        master.title("Login")
+        master.title("Controle de Gastos")
 
-        self.label_username = tk.Label(master, text="Usuário:")
-        self.label_password = tk.Label(master, text="Senha:")
+        # Criação dos widgets
+        self.label_titulo = tk.Label(
+            master, text="Controle de Gastos", font=("Arial", 16)
+        )
+        self.label_titulo.pack(pady=10)
 
-        self.entry_username = tk.Entry(master)
-        self.entry_password = tk.Entry(master, show="*")
+        self.label_descricao = tk.Label(master, text="Descrição:")
+        self.label_descricao.pack()
 
-        self.label_username.grid(row=0, sticky=tk.E)
-        self.label_password.grid(row=1, sticky=tk.E)
-        self.entry_username.grid(row=0, column=1)
-        self.entry_password.grid(row=1, column=1)
+        self.entry_descricao = tk.Entry(master)
+        self.entry_descricao.pack()
 
-        self.logbtn = tk.Button(master, text="Login", command=self._login_btn_clicked)
-        self.logbtn.grid(columnspan=2)
+        self.label_valor = tk.Label(master, text="Valor:")
+        self.label_valor.pack()
 
-        self.db_conn = sqlite3.connect("login.db")
-        self.db_cursor = self.db_conn.cursor()
-        self.db_cursor.execute(
-            """CREATE TABLE IF NOT EXISTS users
-                            (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            username TEXT NOT NULL,
-                            password TEXT NOT NULL);"""
+        self.entry_valor = tk.Entry(master)
+        self.entry_valor.pack()
+
+        self.button_adicionar = tk.Button(
+            master, text="Adicionar", command=self.adicionar_despesa
+        )
+        self.button_adicionar.pack(pady=10)
+
+        self.listbox_despesas = tk.Listbox(master)
+        self.listbox_despesas.pack()
+
+        self.button_editar = tk.Button(
+            master, text="Editar", command=self.editar_despesa
+        )
+        self.button_editar.pack(pady=10)
+
+        self.button_excluir = tk.Button(
+            master, text="Excluir", command=self.excluir_despesa
+        )
+        self.button_excluir.pack()
+
+        self.label_total = tk.Label(master, text="Total de Gastos: R$ 0,00")
+        self.label_total.pack(pady=10)
+
+    def adicionar_despesa(self):
+        descricao = self.entry_descricao.get()
+        valor = float(self.entry_valor.get())
+
+        self.listbox_despesas.insert(tk.END, f"{descricao} - R$ {valor:.2f}")
+
+        self.entry_descricao.delete(0, tk.END)
+        self.entry_valor.delete(0, tk.END)
+
+        self.atualizar_total()
+
+    def editar_despesa(self):
+        selecionado = self.listbox_despesas.curselection()
+
+        if selecionado:
+            descricao_antiga, valor_antigo = self.listbox_despesas.get(
+                selecionado[0]
+            ).split(" - ")
+            valor_antigo = float(valor_antigo[3:])
+
+            self.entry_descricao.insert(0, descricao_antiga)
+            self.entry_valor.insert(0, valor_antigo)
+
+            self.listbox_despesas.delete(selecionado[0])
+
+            self.atualizar_total()
+
+    def excluir_despesa(self):
+        selecionado = self.listbox_despesas.curselection()
+
+        if selecionado:
+            self.listbox_despesas.delete(selecionado[0])
+
+            self.atualizar_total()
+
+    def atualizar_total(self):
+        total = sum(
+            float(self.listbox_despesas.get(i).split(" - ")[1][3:])
+            for i in range(self.listbox_despesas.size())
         )
 
-    def _login_btn_clicked(self):
-        username = self.entry_username.get()
-        password = self.entry_password.get()
-
-        self.db_cursor.execute(
-            "SELECT * FROM users WHERE username = ? AND password = ?",
-            (username, password),
-        )
-        user = self.db_cursor.fetchone()
-
-        if user:
-            print("Login realizado com sucesso!")
-        else:
-            print("Usuário ou senha incorretos.")
+        self.label_total.config(text=f"Total de Gastos: R$ {total:.2f}")
 
 
 root = tk.Tk()
-login = Login(root)
+tela = TelaControleGastos(root)
 root.mainloop()
