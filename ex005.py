@@ -5,7 +5,6 @@ entrada = input('Voce quer "entrar" ou "sair"? ')
 if entrada == 'entrar':
     print('Voce entrou no sistema')
   
-  print(12341234)
   
 elif entrada == 'sair':
     print('Voce saiu do sistema')
