@@ -1,0 +1,31 @@
+gamesList = ["Resident Evil 4", "Star wars jedi Survivor", "Call of duty Modern Warfare 3", "Red Dead2",
+             "AC Odissey"]
+
+# 1 tamanho da lista
+print(len(gamesList))
+
+# 2 recuperar um item da lista pelo índice
+
+print(gamesList.index("Red Dead2"))
+
+# 3 - Adicionar item ao final da Lista
+
+gamesList.append("WOW")
+print(gamesList)
+
+# 4 - Ordenar Lista
+
+gamesList.sort()
+print(gamesList)
+
+# 5 - Copiar os itens de uma lista para outra
+
+gamereset = gamesList.copy()
+gamereset.remove("Star wars jedi Survivor")
+print(gamereset)
+
+# 6 - Remove todos os itens da lista
+
+gamesList.clear()
+print(gamesList)
+
