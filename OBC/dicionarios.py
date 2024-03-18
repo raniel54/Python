@@ -20,7 +20,7 @@ print(gameFifa.keys())
 # 3 - Bsucar apenas os valores do dicionário
 print(gameFifa.values())
 
-# 4 - Buscar itens do docion´~ario com chave e valor
+# 4 - Buscar itens do docionãrio com chave e valor
 print(gameFifa.items())
 
 # 5 - Adicionar itens no dicionário
