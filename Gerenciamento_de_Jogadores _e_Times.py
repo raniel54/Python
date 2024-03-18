@@ -17,3 +17,35 @@
 
 # Este é o exercício de revisão do módulo, então aproveite para utilizar todos os recursos vistos até agora, como os funções, condições, loop, listas, etc.
 
+teams = {}
+done = False
+
+while not done:
+    # Opção no programa
+    print("O que voce deseja fazer?")
+    print("1. Adicionar um time")
+    print("2. Remover um time")
+    print("3. Listar times")
+    print("4. Adicionar jogador em um time")
+    print("5. Remover jogador de um time")
+    print("6. Listar jogadores de um time")
+    print("7. Sair")
+    
+    choice = input (">")
+    if choice == "1":
+        pass
+    elif choice == "2":
+        pass
+    elif choice == "3":
+        pass
+    elif choice == "4":
+        pass
+    elif choice == "5":
+        pass
+    elif choice == "6":
+        pass
+    elif choice == "7":
+        done = True
+    else:
+        print("Opção invalida")
+    
