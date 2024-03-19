@@ -3,6 +3,7 @@
 #Crie duas funções em python para agendar o desligamento do computador em uma hora e meia hora.
 
 import os
+import sys
 done = False
 while not done:
     # Opção no programa
@@ -24,6 +25,6 @@ while not done:
         os.system('shutdown -a') # cancelar agendamento
         print("Seu agendamento foi cancelado")
     elif choice == "4":
-        os.system('cls')
+        sys.exit()
         
  
