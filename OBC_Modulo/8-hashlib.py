@@ -17,4 +17,6 @@ print(algorithm.hexdigest())
 
 # 4 - Utilizando o MD5
 
-md5 = hask
+md5 = hashlib.md5()
+md5.update(message)
+print(md5.hexdigest())
