@@ -1,3 +1,3 @@
-from sketchpy import library
-object = library.rdj()
-object.draw()
+from sketchpy import library as lib
+obj = lib.tom_holland()
+obj.draw()
