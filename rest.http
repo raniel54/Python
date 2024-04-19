@@ -1,0 +1,12 @@
+POST https://graph.microsoft.com/v1.0/subscriptions
+Content-Type: application/json
+Authorization: Bearer a61fe9a6-d030-411b-afd3-01e3089b1319
+
+
+{
+    "changeType": "created",
+    "notificationUrl": "~0L8Q~WqwRy.jD-1V6hESbaNE3_I2ONr_eTEZbk~",
+    "resource": "me/mailFolders('inbox')/messages",
+    "expirationDateTime": "YYYY-MM-DDTHH:MM:SSZ",
+    "clientState": "random_state"
+}
