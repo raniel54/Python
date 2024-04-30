@@ -1,0 +1,12 @@
+java
+Html
+Python
+CSS
+Ign
+Iphone
+nomes
+Agua
+ca�ada
+Jurubeba
+n�o
+# with open("exer.txt", "r", encoding="utf-8") as file:
